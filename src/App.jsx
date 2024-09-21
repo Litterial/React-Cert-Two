@@ -1,17 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Router,Route } from 'react-router-dom';
 import './App.css'
 import SelectTrivia from "./SelectTrivia.jsx"
+import Results from "./Results.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
 
     <>
-      <SelectTrivia />
+    <Router>
+      <Route path="/" component={SelectTrivia}/>
+      <Route path="/results" component={Results} />
+      </Router>
     </>
 
   )
