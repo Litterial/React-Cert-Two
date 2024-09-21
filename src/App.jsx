@@ -1,4 +1,5 @@
-import { Router,Route } from 'react-router-dom';
+import { Routes,Route,BrowserRouter } from 'react-router-dom';
+import React from 'react';
 import './App.css'
 import SelectTrivia from "./SelectTrivia.jsx"
 import Results from "./Results.jsx"
@@ -9,10 +10,12 @@ function App() {
   return (
 
     <>
-    <Router>
-      <Route path="/" component={SelectTrivia}/>
-      <Route path="/results" component={Results} />
-      </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SelectTrivia />}/>
+        <Route path="/results" element={<Results />} />
+      </Routes>
+    </BrowserRouter>
     </>
 
   )

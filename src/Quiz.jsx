@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { shuffle } from './Helper.jsx';
+import { Link } from 'react-router-dom';
 
 export default function Quiz(props) {
 
+
+
+  
   const questionnaire = props.quiz.map((elem,ndx) => {
     const name = `choice${ndx+1}`
     return (
@@ -17,7 +21,17 @@ export default function Quiz(props) {
                    
              </div>)});
     
-    const submitButton = Object.values(props.choices).includes(null) ? "" : <button className="btn btn-primary btn-lg"> Submit Quiz</button>
+    // const button = Object.values(props.choices).includes(null) ? "" : <button className="btn btn-primary btn-lg col-md-auto col-12 mt-3" onClick={props.submitQuiz}> Submit Quiz</button>
+    const button = Object.values(props.choices).includes(null) ? "" : <Link to={"/results"} state={
+      {
+        quiz:props.quiz,
+        choices:props.choices,
+        score: props.changeScore()
+      }
+          
+      }
+      
+     className="btn btn-primary btn-lg col-md-auto col-12 mt-3"> Submit Quiz</Link>
 
    
 
@@ -35,7 +49,7 @@ export default function Quiz(props) {
       })}
        */}
        {questionnaire}
-       {submitButton}
+       {button}
     </div>
   );
 }
